@@ -1,0 +1,20 @@
+?value: dict
+      | list
+      | string
+      | number
+      | "true"
+      | "false"
+      | "null"
+
+list: "[" value ("," value)* "]"
+
+dict: "{" pair ("," pair)* "}"
+pair: string ":" value
+
+string: ESCAPED_STRING
+number: SIGNED_NUMBER
+
+%import common.ESCAPED_STRING
+%import common.SIGNED_NUMBER
+%import common.WS
+%ignore WS
